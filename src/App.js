@@ -1,12 +1,15 @@
 import React from "react";
 import "./App.css";
+import Person from "./person/Person";
 
 function App() {
   return (
     <div className="App">
       <h1>Hello World</h1>
+      <p>Paragraph 1</p>
+      <Person />
     </div>
-    // <h1>Me too</h1>  => Don't do that
+    // <h1>Me too</h1>  => Don't do that because React should use one root elements
   );
 
   // return React.createElement(
