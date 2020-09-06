@@ -36,10 +36,21 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "white",
+      border: "1px solid blue",
+      borderRadius: "10px",
+      padding: "10px",
+      boxShadow: "0px 10px 10px -11px rgba(0, 0, 0, 0.75)",
+      cursor: "pointer",
+    };
+
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <button onClick={() => this.handleClicked("Hoon")}>Change Name</button>
+        <button style={style} onClick={() => this.handleClicked("Hoon")}>
+          Change Name
+        </button>
         <p>Paragraph 1</p>
         <Person
           name={this.state.persons[0].name}
