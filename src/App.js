@@ -5,24 +5,27 @@ import Person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
-      { name: "Hoon", age: 22 },
-      { name: "Crazybirdz", age: 23 },
-      { name: "CrazyEagle", age: 24 },
-      { name: "CrazyCrow", age: 25 },
+      { id: "reewrw12", name: "Hoon", age: 22 },
+      { id: "12fdvcxv", name: "Crazybirdz", age: 23 },
+      { id: "afdf31fdz", name: "CrazyEagle", age: 24 },
+      { id: "rewfd3fcz", name: "CrazyCrow", age: 25 },
     ],
-    otherState: "The other state",
+    otherState: "Another state",
     showUsers: false,
   };
 
-  handleChangeName = (event) => {
-    this.setState({
-      persons: [
-        { name: event.target.value, age: 28 },
-        { name: "Crazybirdz", age: 23 },
-        { name: "CrazyEagle", age: 24 },
-        { name: "CrazyCrow", age: 25 },
-      ],
+  handleChangeName = (event, id) => {
+    const personIndex = this.state.persons.findIndex((person) => {
+      return person.id === id;
     });
+
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons });
   };
 
   handleToggleUsers = () => {
@@ -54,9 +57,11 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
+                click={this.handleDeleteUser.bind(this, index)}
                 name={person.name}
                 age={person.age}
-                click={this.handleDeleteUser.bind(this, index)}
+                key={person.id}
+                changeName={(event) => this.handleChangeName(event, person.id)}
               />
             );
           })}
