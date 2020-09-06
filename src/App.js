@@ -14,17 +14,6 @@ class App extends Component {
     showUsers: false,
   };
 
-  handleClicked = (newName) => {
-    this.setState({
-      persons: [
-        { name: newName, age: 28 },
-        { name: "Crazybirdz", age: 23 },
-        { name: "CrazyEagle", age: 24 },
-        { name: "CrazyCrow", age: 25 },
-      ],
-    });
-  };
-
   handleChangeName = (event) => {
     this.setState({
       persons: [
@@ -39,6 +28,12 @@ class App extends Component {
   handleToggleUsers = () => {
     const doesShow = this.state.showUsers;
     this.setState({ showUsers: !doesShow }); // setState is not replace all states but Update certain state!!
+  };
+
+  handleDeleteUser = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState(persons);
   };
 
   render() {
@@ -56,26 +51,15 @@ class App extends Component {
     if (this.state.showUsers) {
       persons = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            click={this.handleClicked.bind(this, "Jae Hoon Yang")}
-            changeName={this.handleChangeName}
-          >
-            Hobby is traveling to foriegn that have beatiful landscape!
-          </Person>
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          />
-          <Person
-            name={this.state.persons[3].name}
-            age={this.state.persons[3].age}
-          />
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                name={person.name}
+                age={person.age}
+                click={this.handleDeleteUser.bind(this, index)}
+              />
+            );
+          })}
         </div>
       );
     }
