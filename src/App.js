@@ -22,7 +22,17 @@ class App extends Component {
         { name: "CrazyCrow", age: 25 },
       ],
     });
-    console.log(this.state);
+  };
+
+  handleChangeName = (event) => {
+    this.setState({
+      persons: [
+        { name: event.target.value, age: 28 },
+        { name: "Crazybirdz", age: 23 },
+        { name: "CrazyEagle", age: 24 },
+        { name: "CrazyCrow", age: 25 },
+      ],
+    });
   };
 
   render() {
@@ -35,6 +45,7 @@ class App extends Component {
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
           click={this.handleClicked.bind(this, "Jae Hoon Yang")}
+          changeName={this.handleChangeName}
         >
           Hobby is traveling to foriegn that have beatiful landscape!
         </Person>
