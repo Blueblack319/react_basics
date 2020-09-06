@@ -12,10 +12,15 @@ class App extends Component {
     ],
   };
 
+  handleClicked = () => {
+    console.log("Button was clicked!");
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Hello World</h1>
+        <button onClick={this.handleClicked}>Change Name</button>
         <p>Paragraph 1</p>
         <Person name={this.state.person[0].name} age={this.state.person[0].age}>
           Hobby is traveling to foriegn that have beatiful landscape!
