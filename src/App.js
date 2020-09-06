@@ -11,6 +11,7 @@ class App extends Component {
       { name: "CrazyCrow", age: 25 },
     ],
     otherState: "The other state",
+    showUsers: false,
   };
 
   handleClicked = (newName) => {
@@ -35,6 +36,11 @@ class App extends Component {
     });
   };
 
+  handleToggleUsers = () => {
+    const doesShow = this.state.showUsers;
+    this.setState({ showUsers: !doesShow });
+  };
+
   render() {
     const style = {
       backgroundColor: "white",
@@ -48,30 +54,33 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <button style={style} onClick={() => this.handleClicked("Hoon")}>
-          Change Name
+        <button style={style} onClick={this.handleToggleUsers}>
+          Show Users
         </button>
-        <p>Paragraph 1</p>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          click={this.handleClicked.bind(this, "Jae Hoon Yang")}
-          changeName={this.handleChangeName}
-        >
-          Hobby is traveling to foriegn that have beatiful landscape!
-        </Person>
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-        />
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
-        <Person
-          name={this.state.persons[3].name}
-          age={this.state.persons[3].age}
-        />
+        {this.state.showUsers ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+              click={this.handleClicked.bind(this, "Jae Hoon Yang")}
+              changeName={this.handleChangeName}
+            >
+              Hobby is traveling to foriegn that have beatiful landscape!
+            </Person>
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+            />
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+            <Person
+              name={this.state.persons[3].name}
+              age={this.state.persons[3].age}
+            />
+          </div>
+        ) : null}
       </div>
       // <h1>Me too</h1>  => Don't do that because React should use one root elements
     );
