@@ -4,12 +4,6 @@ import personClasses from "./Person.module.css";
 // import "./Person.css";
 
 const person = (props) => {
-  const rnd = Math.random();
-
-  if (rnd > 0.9) {
-    throw new Error("Something went wrong!");
-  }
-
   return (
     <div className={personClasses.Person}>
       <p onClick={props.click}>
