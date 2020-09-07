@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "./Cockpit.module.css";
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect");
+    // HTTP request...
+  });
   console.log("[Cockpit.js] rendering...");
   const assignClasses = [];
   let btnClass = null;
@@ -29,4 +33,4 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+export default Cockpit;
