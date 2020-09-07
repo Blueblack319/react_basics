@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Radium from "radium";
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -47,6 +48,10 @@ class App extends Component {
       padding: "10px",
       boxShadow: "0px 10px 10px -11px rgba(0, 0, 0, 0.75)",
       cursor: "pointer",
+      ":hover": {
+        color: "blue",
+        fontWeight: "600",
+      },
     };
 
     let persons = null;
@@ -68,6 +73,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = "#55efc4";
+      style[":hover"] = {
+        backgroundColor: "#81ecec",
+        color: "white",
+      };
     }
 
     const classes = [];
@@ -77,7 +86,6 @@ class App extends Component {
     }
     if (this.state.persons.length <= 1) {
       classes.push("bold"); // classes = ["red", "bold"]
-      console.log(classes.join(" "));
     }
 
     return (
@@ -99,7 +107,7 @@ class App extends Component {
   // );
 }
 
-export default App;
+export default Radium(App);
 
 // handleClicked = () => {
 //   // Don't Do that: this.state.persons[0].name = "Jae Hoon Yang";
