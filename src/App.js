@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import StyledButton from "./Buttons/StyledButton";
 import Person from "./Person/Person";
-
 class App extends Component {
   state = {
     persons: [
@@ -40,15 +40,6 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "white",
-      border: "1px solid blue",
-      borderRadius: "10px",
-      padding: "10px",
-      boxShadow: "0px 10px 10px -11px rgba(0, 0, 0, 0.75)",
-      cursor: "pointer",
-    };
-
     let persons = null;
 
     if (this.state.showUsers) {
@@ -67,7 +58,6 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "#55efc4";
     }
 
     const classes = [];
@@ -83,9 +73,7 @@ class App extends Component {
       <div className="App">
         <h1>Hello World</h1>
         <p className={classes.join(" ")}>This is really Working!!</p>
-        <button style={style} onClick={this.handleToggleUsers}>
-          Show Users
-        </button>
+        <StyledButton onClick={this.handleToggleUsers}>Show Users</StyledButton>
         {persons}
       </div>
     );
