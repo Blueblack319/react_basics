@@ -4,6 +4,7 @@ import personClasses from "./Person.module.css";
 // import "./Person.css";
 
 const person = (props) => {
+  console.log("[App.js] rendering...");
   return (
     <div className={personClasses.Person}>
       <p onClick={props.click}>

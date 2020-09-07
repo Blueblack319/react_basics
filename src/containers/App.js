@@ -4,7 +4,22 @@ import classes from "./App.module.css";
 
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+    // this.state = {
+    //   persons: [
+    //     { id: "reewrw12", name: "Hoon", age: 22 },
+    //     { id: "12fdvcxv", name: "Crazybirdz", age: 23 },
+    //     { id: "afdf31fdz", name: "CrazyEagle", age: 24 },
+    //     { id: "rewfd3fcz", name: "CrazyCrow", age: 25 },
+    //   ],
+    //   otherState: "Another state",
+    //   showUsers: false,
+    // };
+  }
   state = {
     persons: [
       { id: "reewrw12", name: "Hoon", age: 22 },
@@ -15,6 +30,15 @@ class App extends Component {
     otherState: "Another state",
     showUsers: false,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
 
   handleChangeName = (event, id) => {
     const personIndex = this.state.persons.findIndex((person) => {
@@ -42,6 +66,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] render");
     let persons = null;
 
     if (this.state.showUsers) {
@@ -59,6 +84,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
+          title={this.props.appTitle}
           persons={this.state.persons}
           clicked={this.handleToggleUsers}
           showUsers={this.state.showUsers}
