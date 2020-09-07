@@ -67,6 +67,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = "#55efc4";
     }
 
     return (
