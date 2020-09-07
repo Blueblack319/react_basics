@@ -6,6 +6,7 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
     alert("First rendering");
+    return () => console.log("[Cockpit.js] cleanup work in useEffect");
   }, []);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert("Save user to cloud");
     }, 1000);
-    return () => console.log("[Cockpit.js] cleanup work in useEffect");
+    return () => console.log("[Cockpit.js] 2nd cleanup work in useEffect");
   }, [props.persons]);
 
   console.log("[Cockpit.js] rendering...");
