@@ -31,7 +31,7 @@ class App extends Component {
 
   handleToggleUsers = () => {
     const doesShow = this.state.showUsers;
-    this.setState({ showUsers: !doesShow }); // setState is not replace all states but Update certain state!!
+    this.setState({ showUsers: !doesShow });
   };
 
   handleDeleteUser = (personIndex) => {
@@ -82,10 +82,10 @@ class App extends Component {
     const classes = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push("red"); // classes = ["red"]
+      classes.push("red");
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold"); // classes = ["red", "bold"]
+      classes.push("bold");
     }
 
     return (
@@ -99,27 +99,8 @@ class App extends Component {
           {persons}
         </div>
       </StyleRoot>
-      // <h1>Me too</h1>  => Don't do that because React should use one root elements
     );
   }
-  // return React.createElement(
-  //   "div",
-  //   { className: "App" },
-  //   React.createElement("h1", null, "Hi! I'm in App")
-  // );
 }
 
 export default Radium(App);
-
-// handleClicked = () => {
-//   // Don't Do that: this.state.persons[0].name = "Jae Hoon Yang";
-//   this.setState({
-//     persons: [
-//       { name: "Jae Hoon Yang", age: 24 },
-//       { name: "Crazybirdz", age: 23 },
-//       { name: "CrazyEagle", age: 24 },
-//       { name: "CrazyCrow", age: 25 },
-//     ],
-//   });
-//   console.log(this.state.otherState);
-// };
