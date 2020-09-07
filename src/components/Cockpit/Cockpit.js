@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./Cockpit.module.css";
 
 const cockpit = (props) => {
-  console.log("[App.js] rendering...");
+  console.log("[Cockpit.js] rendering...");
   const assignClasses = [];
   let btnClass = null;
 
