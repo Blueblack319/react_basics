@@ -70,9 +70,20 @@ class App extends Component {
       style.backgroundColor = "#55efc4";
     }
 
+    const classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); // classes = ["red"]
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); // classes = ["red", "bold"]
+      console.log(classes.join(" "));
+    }
+
     return (
       <div className="App">
         <h1>Hello World</h1>
+        <p className={classes.join(" ")}>This is really Working!!</p>
         <button style={style} onClick={this.handleToggleUsers}>
           Show Users
         </button>
