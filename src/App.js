@@ -73,7 +73,12 @@ class App extends Component {
       <div className="App">
         <h1>Hello World</h1>
         <p className={classes.join(" ")}>This is really Working!!</p>
-        <StyledButton onClick={this.handleToggleUsers}>Show Users</StyledButton>
+        <StyledButton
+          onClick={this.handleToggleUsers}
+          alt={this.state.showUsers}
+        >
+          Show Users
+        </StyledButton>
         {persons}
       </div>
     );
