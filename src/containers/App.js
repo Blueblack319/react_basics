@@ -5,7 +5,6 @@ import classes from "./App.module.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
-import Aux from "../hoc/Aux";
 
 class App extends Component {
   constructor(props) {
