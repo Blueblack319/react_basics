@@ -5,6 +5,7 @@ import classes from "./App.module.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
+import AuthContext from "../context/auth-context";
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
     showUsers: false,
     showCockpit: true,
     changeCounter: 0,
+    authenticated: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -73,6 +75,10 @@ class App extends Component {
     this.setState({ showUsers: !doesShow });
   };
 
+  handleLogin = () => {
+    this.setState({ authenticated: true });
+  };
+
   handleDeleteUser = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
@@ -100,15 +106,22 @@ class App extends Component {
         <button onClick={() => this.setState({ showCockpit: false })}>
           Remove Cockpit
         </button>
-        {this.state.showCockpit ? (
-          <Cockpit
-            title={this.props.appTitle}
-            personsLength={this.state.persons.length}
-            clicked={this.handleToggleUsers}
-            showUsers={this.state.showUsers}
-          />
-        ) : null}
-        {persons}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.handleLogin,
+          }}
+        >
+          {this.state.showCockpit ? (
+            <Cockpit
+              title={this.props.appTitle}
+              personsLength={this.state.persons.length}
+              clicked={this.handleToggleUsers}
+              showUsers={this.state.showUsers}
+            />
+          ) : null}
+          {persons}
+        </AuthContext.Provider>
       </Fragment>
     );
   }
