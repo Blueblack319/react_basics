@@ -16,16 +16,16 @@ const Cockpit = (props) => {
       alert("Save user to cloud");
     }, 1000);
     return () => console.log("[Cockpit.js] 2nd cleanup work in useEffect");
-  }, [props.persons]);
+  });
 
   console.log("[Cockpit.js] rendering...");
   const assignClasses = [];
   let btnClass = null;
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     assignClasses.push(classes.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     assignClasses.push(classes.bold);
   }
 
@@ -44,4 +44,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
