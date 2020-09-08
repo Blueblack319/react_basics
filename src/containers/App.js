@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import classes from "./App.module.css";
 
@@ -94,7 +94,7 @@ class App extends Component {
     }
 
     return (
-      <Aux>
+      <Fragment>
         <button onClick={() => this.setState({ showCockpit: false })}>
           Remove Cockpit
         </button>
@@ -107,7 +107,7 @@ class App extends Component {
           />
         ) : null}
         {persons}
-      </Aux>
+      </Fragment>
     );
   }
 }
